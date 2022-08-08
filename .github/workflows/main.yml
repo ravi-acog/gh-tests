@@ -14,30 +14,26 @@ jobs:
     defaults:
       run:
         working-directory: frontend
+        using: 'composite'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
-        runs: 
-          using: 'composite'
-            steps: 
-              - run : npm i
-                shell: bash
-              - run : npm ci
-                shell: bash
-              - run : npm run build
-                shell: bash
-              - run : git config user.name github-actions
-                shell: bash
-              - run : git config user.email github-actions@github.com
-                shell: bash
-              - run : git --work-tree build add --all
-                shell: bash
-              - run : git commit -m "Automatic Build and Deploy run by GitHub Actions"
-                shell: bash
-              - run : git push origin HEAD:gh-pages --force
-                shell: bash
+      - run: npm ci
+        shell: bash
+      - run: npm run build
+        shell: bash
+      - run: git config user.name github-actions
+        shell: bash
+      - run: git config user.email github-actions@github.com
+        shell: bash
+      - run: git --work-tree build add --all
+        shell: bash
+      - run: git commit -m "Automatic Build and Deploy run by GitHub Actions"
+        shell: bash
+      - run: git push origin HEAD:gh-pages --force
+        shell: bash
       # - run: npm ci
       #   working-directory: frontend
       # - run: npm run build --if-present
