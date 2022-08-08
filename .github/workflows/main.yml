@@ -26,5 +26,3 @@ jobs:
       - run: ls
       - name: Build and Deploy React app to GitHub Pages
         uses: omkartapale/react-deployment-gh-pages@v1.0.0
-        with:
-          entrypoint: ./frontend
