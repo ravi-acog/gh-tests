@@ -16,7 +16,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
-      - run:
-          working-directory: frontend
+        defauls:
+          run:
+            working-directory: frontend
       - run: npm ci
       - run: npm run build --if-present
